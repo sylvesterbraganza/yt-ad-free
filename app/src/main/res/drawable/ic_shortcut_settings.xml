@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Simple sliders glyph for the "Settings" launcher shortcut. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+    <path
+        android:pathData="M4,7 L20,7 M4,17 L20,17"
+        android:strokeWidth="2"
+        android:strokeColor="#0F766E"
+        android:strokeLineCap="round" />
+    <path
+        android:fillColor="#0F766E"
+        android:pathData="M9,7m-3,0a3,3 0,1 1,6 0a3,3 0,1 1,-6 0 M15,17m-3,0a3,3 0,1 1,6 0a3,3 0,1 1,-6 0" />
+</vector>

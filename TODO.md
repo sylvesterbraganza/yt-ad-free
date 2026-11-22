@@ -1,0 +1,37 @@
+# TODO
+
+## Decisions made
+- **22 Nov 2026:** free product, no monetisation.
+- **22 Nov 2026:** show YouTube's own mobile site unchanged inside the app; don't rebuild YouTube's UI.
+- **22 Nov 2026:** engine is GeckoView with uBlock Origin bundled, not a Brave fork.
+  - A Brave fork needs a Linux build machine and hours-long builds, and you'd re-apply your changes to every Chromium release.
+  - GeckoView builds on Windows, and updating it means changing one version number.
+- App name and icon must be our own, not YouTube's (trademark risk; Vanced precedent).
+
+## Phase 2: prototype
+- [x] Gradle project: AGP 9.5.2, Kotlin 2.4.21, GeckoView 160
+- [x] Full-screen GeckoView showing m.youtube.com, no browser UI
+- [x] Site lock (`SitePolicy`) with unit tests
+- [x] Bundled uBlock Origin as a built-in extension
+- [x] Full-screen video, orientation lock, back button, edge-to-edge layout
+- [x] "Open with" and "Share" for YouTube links
+- [x] Settings screen via the app-icon long-press shortcut (clear data, about and licences)
+- [x] Debug APKs build (one per CPU type)
+- [x] Emulator: YouTube loads, uBlock Origin loads (1.76.6), a link opened with "Open with" goes to the video, the video plays with no pre-roll ad (22 Nov 2026)
+- [x] Emulator: full screen hides system bars and locks to landscape; Back exits full screen and unlocks rotation (22 Nov 2026)
+- [x] Emulator: Settings shortcut registered, clear-data dialog, "Go to home page"
+- [x] Google sign-in works; subscriptions and history visible (tested by you on the emulator, 22 Nov 2026)
+- [ ] Real phone (arm64)
+- Note: `adb input tap` doesn't trigger YouTube's full-screen button; real taps do. Use manual taps for player-control tests.
+- [ ] Test on a real phone (arm64)
+
+## Next
+- [ ] Choose the final name and icon (current "Y" mark is a placeholder)
+- [x] Release signing key (`keystore/`, git-ignored) and signed release APKs, about 97 MB each (22 Nov 2026)
+- [ ] **Back up `keystore/projecty-release.jks` and `keystore.properties`**
+- [ ] Install and test the release APK on a real phone
+- [ ] Restore the last page after Android kills the app in the background (save and restore the browsing session)
+- [ ] Decide on background audio and picture-in-picture (not built; YouTube restricts it)
+- [ ] Check memory use and smoothness on a low-end phone
+- [ ] `git init` (Git is not installed yet)
+- [ ] Update mechanism for sideloaded APKs (simple version check against a file you host)

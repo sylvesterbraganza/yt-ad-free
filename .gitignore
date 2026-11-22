@@ -1,0 +1,16 @@
+.gradle/
+.kotlin/
+build/
+/app/build/
+local.properties
+.idea/
+*.iml
+.DS_Store
+captures/
+*.apk
+*.aab
+*.jks
+*.keystore
+# Release signing key + passwords: NEVER commit. Back them up somewhere safe instead.
+keystore/
+keystore.properties

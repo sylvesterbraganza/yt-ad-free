@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Matches YouTube's light page background so there is no flash while loading. -->
+    <color name="page_background">#FFFFFF</color>
+    <color name="icon_background">#0F766E</color>
+    <color name="icon_foreground">#FFFFFF</color>
+</resources>

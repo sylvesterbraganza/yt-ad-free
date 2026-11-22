@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Project Y</string>
+
+    <string name="settings_title">Settings</string>
+    <string name="settings_version">Version %1$s</string>
+    <string name="settings_reload">Go to home page</string>
+    <string name="settings_clear_title">Clear all data and sign out</string>
+    <string name="settings_clear_message">This deletes cookies, site data and cache, and signs you out of your Google account in this app.</string>
+    <string name="settings_clear_confirm">Clear</string>
+    <string name="settings_cleared">All data cleared</string>
+    <string name="settings_clear_failed">Could not clear data</string>
+
+    <string name="settings_about_heading">About and open-source licences</string>
+    <string name="settings_about_body">Project Y is an independent app. It is not affiliated with, endorsed by or sponsored by YouTube or Google. Videos and pages shown belong to YouTube and their creators.\n\nBuilt with:\n• GeckoView, Mozilla\'s browser engine. Mozilla Public License 2.0. Source: https://hg.mozilla.org/mozilla-central/\n• uBlock Origin by Raymond Hill and contributors. GNU GPL v3. Source: https://github.com/gorhill/uBlock\n• AndroidX libraries. Apache License 2.0.</string>
+</resources>
