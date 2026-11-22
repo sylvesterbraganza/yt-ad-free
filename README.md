@@ -4,6 +4,14 @@ A free Android app that shows YouTube's mobile site full-screen. It has no addre
 
 > Status: **Phase 2 prototype.** The app builds and installs on the emulator. Not yet tested on a real phone.
 
+## Download (for your phone)
+Open **https://github.com/sylvesterbraganza/yt-ad-free/releases/latest** on the phone and tap `ProjectY-…-arm64.apk`. APKs live in GitHub Releases, not in the repo: each one is about 97 MB, just under GitHub's 100 MB per-file limit, and committing every version would bloat the repo.
+
+**Publish a new version** after a release build (replace `0.1.2` with the new version):
+```powershell
+& "C:\Program Files\GitHub CLI\gh.exe" release create v0.1.2 ProjectY-0.1.2-arm64.apk --title "Project Y 0.1.2" --notes "What changed"
+```
+
 ## How it works
 ```
 Project Y app (Kotlin)
