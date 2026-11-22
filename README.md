@@ -29,6 +29,8 @@ Project Y app (Kotlin)
 - **Opening links:** "Open with…" and "Share" for YouTube links both open the app.
 - **Dark mode:** follows the system setting, and YouTube's site follows it too.
 
+**Full details** of the architecture, build setup, signing and release steps are in [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md).
+
 Why GeckoView instead of a Brave fork: see `docs/phase1-research-report.md` and the decision notes in `TODO.md`. In short, it builds on Windows in minutes, and updating it means changing one version number.
 
 ## Setup (Windows)
