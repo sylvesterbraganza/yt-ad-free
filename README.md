@@ -11,8 +11,10 @@ Project Y app (Kotlin)
  ├── SitePolicy       which pages may load (YouTube and Google sign-in only)
  ├── SettingsActivity long-press the app icon -> "Settings"
  └── GeckoView        Firefox's browser engine, as a library (MPL-2.0)
-       └── uBlock Origin   bundled as a built-in extension (GPLv3)
+       ├── uBlock Origin   bundled as a built-in extension (GPLv3)
+       └── tweaks          our own tiny built-in extension: hides AV1 from YouTube
 ```
+- **No AV1 (performance):** YouTube sends AV1 video to Firefox-based browsers, and most phones can only decode AV1 in software, which is slow. `assets/extensions/tweaks/no-av1.js` tells YouTube that AV1 isn't supported, so it sends VP9 or H.264, which phones decode in hardware. Verified on the emulator: the hardware VP9 decoder is used for Shorts.
 - **Site lock:** YouTube and Google sign-in pages load in the app. Any other web link opens in your normal browser. Links like `intent:` and `vnd.youtube:` are ignored, so YouTube's official app can't take over.
 - **Full-screen video:** system bars hide, and the screen rotates when YouTube's player asks for landscape.
 - **Back button:** goes back in YouTube. On the first page it sends the app to the background, like the official app.

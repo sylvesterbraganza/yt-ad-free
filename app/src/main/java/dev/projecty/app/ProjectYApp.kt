@@ -26,7 +26,10 @@ class ProjectYApp : Application() {
             .remoteDebuggingEnabled(debuggable)
             .aboutConfigEnabled(false)
             .build()
-        GeckoRuntime.create(this, settings).also { installAdBlocker(it) }
+        GeckoRuntime.create(this, settings).also {
+            installAdBlocker(it)
+            installTweaks(it)
+        }
     }
 
     /** The YouTube "tab". Null until [MainActivity] first creates it. */
@@ -55,6 +58,19 @@ class ProjectYApp : Application() {
             )
     }
 
+    /**
+     * Our own small built-in extension (app/src/main/assets/extensions/tweaks): hides AV1 support
+     * from YouTube so phones get hardware-decoded VP9/H.264 instead of slow software AV1.
+     */
+    private fun installTweaks(runtime: GeckoRuntime) {
+        runtime.webExtensionController
+            .ensureBuiltIn(TWEAKS_URI, TWEAKS_ID)
+            .accept(
+                { Log.i(TAG, "Tweaks extension ready") },
+                { error -> Log.e(TAG, "Tweaks extension failed to load", error) },
+            )
+    }
+
     /** Debug builds only: switch uBlock Origin off/on to tell its effects apart from the app's. */
     fun setAdBlockerEnabledForDebug(enabled: Boolean) {
         val controller = runtime.webExtensionController
@@ -70,5 +86,7 @@ class ProjectYApp : Application() {
         private const val TAG = "ProjectY"
         private const val UBLOCK_ID = "uBlock0@raymondhill.net"
         private const val UBLOCK_URI = "resource://android/assets/extensions/ublock/"
+        private const val TWEAKS_ID = "tweaks@projecty.dev"
+        private const val TWEAKS_URI = "resource://android/assets/extensions/tweaks/"
     }
 }

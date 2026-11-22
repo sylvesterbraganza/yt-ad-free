@@ -29,9 +29,12 @@
 - [ ] Choose the final name and icon (current "Y" mark is a placeholder)
 - [x] Release signing key (`keystore/`, git-ignored) and signed release APKs, about 97 MB each (22 Nov 2026)
 - [ ] **Back up `keystore/projecty-release.jks` and `keystore.properties`**
-- [ ] Install and test the release APK on a real phone
+- [x] Release 0.1.0 installed on your phone via Drive: works, but laggy, especially going from Home to Shorts
+- [x] 0.1.1: hide AV1 from YouTube so the phone hardware-decodes VP9/H.264 (verified on the emulator)
+- [ ] Check 0.1.1 on the phone: is Home to Shorts smoother?
+- [ ] If it's still slow: try forcing H.264 too (helps the weakest phones), and test on more devices
 - [ ] Restore the last page after Android kills the app in the background (save and restore the browsing session)
 - [ ] Decide on background audio and picture-in-picture (not built; YouTube restricts it)
 - [ ] Check memory use and smoothness on a low-end phone
-- [ ] `git init` (Git is not installed yet)
+- [x] Git set up, linked to github.com/sylvesterbraganza/yt-ad-free (22 Nov 2026)
 - [ ] Update mechanism for sideloaded APKs (simple version check against a file you host)

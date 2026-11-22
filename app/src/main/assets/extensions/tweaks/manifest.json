@@ -1,0 +1,17 @@
+{
+  "manifest_version": 2,
+  "name": "Project Y tweaks",
+  "version": "1.0",
+  "description": "Performance tweaks for YouTube inside Project Y.",
+  "browser_specific_settings": {
+    "gecko": { "id": "tweaks@projecty.dev" }
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://*.youtube.com/*", "*://*.youtube-nocookie.com/*"],
+      "js": ["no-av1.js"],
+      "run_at": "document_start",
+      "all_frames": true
+    }
+  ]
+}
