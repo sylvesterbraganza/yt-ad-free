@@ -33,6 +33,9 @@
 - [x] 0.1.1: hide AV1 from YouTube so the phone hardware-decodes VP9/H.264 (verified on the emulator)
 - [ ] Check 0.1.1 on the phone: is Home to Shorts smoother?
 - [x] 0.1.2: "Speed tests" switches in Settings: H.264 only, identify as Chrome, ad blocker on/off (verified on the emulator)
+- [x] Your phone: Galaxy S23 (Snapdragon 8 Gen 2, 120 Hz screen)
+- [x] 0.1.3: request 120 Hz (verified it doesn't crash on the emulator, which only has 60 Hz)
+- [ ] You: check that 0.1.3 scrolls at 120 Hz on the S23
 - [ ] You: on the phone, try each switch and report which ones make it smoother (and the phone model)
 - [ ] Based on results: make the winning switches the default; if still slow, profile on the phone over wireless debugging
 - [ ] Restore the last page after Android kills the app in the background (save and restore the browsing session)

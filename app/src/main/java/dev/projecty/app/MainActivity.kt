@@ -38,6 +38,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         // Draw behind the status/nav bars; their icons switch light/dark with the system theme.
         enableEdgeToEdge()
+        requestHighestRefreshRate()
         setContentView(R.layout.activity_main)
 
         geckoView = findViewById(R.id.gecko_view)
@@ -165,6 +166,23 @@ class MainActivity : ComponentActivity() {
         override fun onOrientationUnlock() {
             requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED
         }
+    }
+
+    // ---- Smoothness: 120 Hz ------------------------------------------------------------------
+
+    /**
+     * Phones like the Galaxy S23 have 120 Hz screens, but the system often runs apps it doesn't
+     * know at 60 Hz, which makes scrolling feel laggy next to the official YouTube app. Ask for
+     * the fastest refresh rate available at the current resolution.
+     */
+    private fun requestHighestRefreshRate() {
+        val display = ContextCompat.getDisplayOrDefault(this)
+        val current = display.mode
+        val best = display.supportedModes
+            .filter { it.physicalWidth == current.physicalWidth && it.physicalHeight == current.physicalHeight }
+            .maxByOrNull { it.refreshRate } ?: return
+        window.attributes = window.attributes.apply { preferredDisplayModeId = best.modeId }
+        Log.i(TAG, "Display: requested ${best.refreshRate} Hz (was ${current.refreshRate} Hz)")
     }
 
     // ---- Edge-to-edge layout ----------------------------------------------------------------

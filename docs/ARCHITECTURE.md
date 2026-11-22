@@ -151,6 +151,9 @@ Saved in SharedPreferences `speed` and applied by `ProjectYApp`. Each change rel
 
 These are for finding out what actually helps on a given phone. The winners should become defaults.
 
+### 4.4c Refresh rate (since 0.1.3)
+`MainActivity.requestHighestRefreshRate()` picks the fastest display mode at the current resolution and sets it as the window's `preferredDisplayModeId`. Without it, phones such as the Galaxy S23 may run the app at 60 Hz while the official YouTube app scrolls at 120 Hz. The log line `Display: requested X Hz` shows the result.
+
 ### 4.5 Full-screen video and rotation
 - YouTube's player asks for full screen, and GeckoView calls `onFullScreen(true)`. We hide the status and navigation bars (swipe from the edge shows them briefly) and remove the inset padding.
 - YouTube also asks to lock landscape, and GeckoView calls `onOrientationLock`. We set `requestedOrientation` to match.
@@ -282,6 +285,7 @@ edit code ──► build release ──► copy APK ──► commit + push ─
 | 0.1.0 | 1 | 22 Nov 2026 | first release |
 | 0.1.1 | 2 | 22 Nov 2026 | hide AV1, so video uses hardware decoding (fixes Shorts lag) |
 | 0.1.2 | 3 | 22 Nov 2026 | Settings → Speed tests: H.264 only, identify as Chrome, ad blocker on/off |
+| 0.1.3 | 4 | 22 Nov 2026 | request the screen's highest refresh rate (120 Hz on Galaxy S23) |
 
 ---
 
