@@ -32,7 +32,9 @@
 - [x] Release 0.1.0 installed on your phone via Drive: works, but laggy, especially going from Home to Shorts
 - [x] 0.1.1: hide AV1 from YouTube so the phone hardware-decodes VP9/H.264 (verified on the emulator)
 - [ ] Check 0.1.1 on the phone: is Home to Shorts smoother?
-- [ ] If it's still slow: try forcing H.264 too (helps the weakest phones), and test on more devices
+- [x] 0.1.2: "Speed tests" switches in Settings: H.264 only, identify as Chrome, ad blocker on/off (verified on the emulator)
+- [ ] You: on the phone, try each switch and report which ones make it smoother (and the phone model)
+- [ ] Based on results: make the winning switches the default; if still slow, profile on the phone over wireless debugging
 - [ ] Restore the last page after Android kills the app in the background (save and restore the browsing session)
 - [ ] Decide on background audio and picture-in-picture (not built; YouTube restricts it)
 - [ ] Check memory use and smoothness on a low-end phone

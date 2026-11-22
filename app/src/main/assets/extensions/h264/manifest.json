@@ -1,0 +1,17 @@
+{
+  "manifest_version": 2,
+  "name": "Project Y H.264 only",
+  "version": "1.0",
+  "description": "Optional: makes YouTube send H.264 video only (lightest to decode). Toggled from Settings.",
+  "browser_specific_settings": {
+    "gecko": { "id": "h264@projecty.dev" }
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://*.youtube.com/*", "*://*.youtube-nocookie.com/*"],
+      "js": ["h264-only.js"],
+      "run_at": "document_start",
+      "all_frames": true
+    }
+  ]
+}

@@ -3,6 +3,7 @@ package dev.projecty.app
 import android.app.AlertDialog
 import android.os.Bundle
 import android.widget.Button
+import android.widget.Switch
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.ComponentActivity
@@ -39,6 +40,10 @@ class SettingsActivity : ComponentActivity() {
             finish()
         }
 
+        bindSwitch(R.id.sw_h264, app.h264Only) { app.h264Only = it }
+        bindSwitch(R.id.sw_chrome_ua, app.chromeUserAgent) { app.chromeUserAgent = it }
+        bindSwitch(R.id.sw_adblock, app.adBlockEnabled) { app.adBlockEnabled = it }
+
         findViewById<Button>(R.id.btn_clear).setOnClickListener {
             AlertDialog.Builder(this)
                 .setTitle(R.string.settings_clear_title)
@@ -46,6 +51,18 @@ class SettingsActivity : ComponentActivity() {
                 .setNegativeButton(android.R.string.cancel, null)
                 .setPositiveButton(R.string.settings_clear_confirm) { _, _ -> clearAllData() }
                 .show()
+        }
+    }
+
+    /** Shows a saved setting on a switch; on change, saves it and reloads YouTube to apply it. */
+    private fun bindSwitch(id: Int, current: Boolean, onChange: (Boolean) -> Unit) {
+        findViewById<Switch>(id).apply {
+            isChecked = current
+            setOnCheckedChangeListener { _, checked ->
+                onChange(checked)
+                // Give the extension enable/disable a moment to finish before reloading.
+                postDelayed({ app.session?.reload() }, 300)
+            }
         }
     }
 

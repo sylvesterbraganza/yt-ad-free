@@ -140,6 +140,17 @@ Notes:
 - Verified on the emulator: the log shows `[ProjectY] hid AV1 from YouTube (...)`, and the hardware VP9 decoder is used.
 - This extension is also the place for future page-level fixes.
 
+### 4.4b Speed-test switches (Settings, since 0.1.2)
+Saved in SharedPreferences `speed` and applied by `ProjectYApp`. Each change reloads YouTube.
+
+| Switch | Default | How it works |
+|---|---|---|
+| H.264 video only | off | enables the built-in extension `assets/extensions/h264/` (`h264@projecty.dev`), which also hides VP9/VP8, so YouTube sends H.264 (max 1080p) |
+| Identify as Chrome | off | sets `session.settings.userAgentOverride` to a Chrome-on-Android user agent, so YouTube may serve the code path it optimises most |
+| Ad blocker | on | enables/disables uBlock Origin. Off is only for measuring its cost. |
+
+These are for finding out what actually helps on a given phone. The winners should become defaults.
+
 ### 4.5 Full-screen video and rotation
 - YouTube's player asks for full screen, and GeckoView calls `onFullScreen(true)`. We hide the status and navigation bars (swipe from the edge shows them briefly) and remove the inset padding.
 - YouTube also asks to lock landscape, and GeckoView calls `onOrientationLock`. We set `requestedOrientation` to match.
@@ -270,6 +281,7 @@ edit code ──► build release ──► copy APK ──► commit + push ─
 |---|---|---|---|
 | 0.1.0 | 1 | 22 Nov 2026 | first release |
 | 0.1.1 | 2 | 22 Nov 2026 | hide AV1, so video uses hardware decoding (fixes Shorts lag) |
+| 0.1.2 | 3 | 22 Nov 2026 | Settings → Speed tests: H.264 only, identify as Chrome, ad blocker on/off |
 
 ---
 

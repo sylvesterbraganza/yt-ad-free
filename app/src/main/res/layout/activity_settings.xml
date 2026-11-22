@@ -40,6 +40,41 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="@string/speed_heading"
+            android:textAppearance="@android:style/TextAppearance.Material.Title" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="@string/speed_intro"
+            android:textAppearance="@android:style/TextAppearance.Material.Caption" />
+
+        <Switch
+            android:id="@+id/sw_h264"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="48dp"
+            android:text="@string/speed_h264" />
+
+        <Switch
+            android:id="@+id/sw_chrome_ua"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="48dp"
+            android:text="@string/speed_chrome_ua" />
+
+        <Switch
+            android:id="@+id/sw_adblock"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="32dp"
+            android:minHeight="48dp"
+            android:text="@string/speed_adblock" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
             android:text="@string/settings_about_heading"
             android:textAppearance="@android:style/TextAppearance.Material.Title" />

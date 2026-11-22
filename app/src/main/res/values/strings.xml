@@ -11,6 +11,12 @@
     <string name="settings_cleared">All data cleared</string>
     <string name="settings_clear_failed">Could not clear data</string>
 
+    <string name="speed_heading">Speed tests</string>
+    <string name="speed_intro">Try one switch at a time and compare. YouTube reloads when you change one.</string>
+    <string name="speed_h264">H.264 video only\n<small>Lightest to decode. Max 1080p, a bit more data.</small></string>
+    <string name="speed_chrome_ua">Identify as Chrome\n<small>YouTube may serve faster code. Experimental.</small></string>
+    <string name="speed_adblock">Ad blocker (uBlock Origin)\n<small>Turn off only to measure its cost. Ads will show.</small></string>
+
     <string name="settings_about_heading">About and open-source licences</string>
     <string name="settings_about_body">Project Y is an independent app. It is not affiliated with, endorsed by or sponsored by YouTube or Google. Videos and pages shown belong to YouTube and their creators.\n\nBuilt with:\n• GeckoView, Mozilla\'s browser engine. Mozilla Public License 2.0. Source: https://hg.mozilla.org/mozilla-central/\n• uBlock Origin by Raymond Hill and contributors. GNU GPL v3. Source: https://github.com/gorhill/uBlock\n• AndroidX libraries. Apache License 2.0.</string>
 </resources>
