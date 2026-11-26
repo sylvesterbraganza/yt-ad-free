@@ -22,11 +22,12 @@
 - [x] Emulator: Settings shortcut registered, clear-data dialog, "Go to home page"
 - [x] Google sign-in works; subscriptions and history visible (tested by you on the emulator, 22 Nov 2026)
 - [ ] Real phone (arm64)
-- Note: `adb input tap` doesn't trigger YouTube's full-screen button; real taps do. Use manual taps for player-control tests.
+- Note: `adb input tap` used to miss YouTube's buttons because of the tap-offset bug fixed in 0.2.0; it works now.
 - [ ] Test on a real phone (arm64)
 
 ## Next
-- [ ] Choose the final name and icon (current "Y" mark is a placeholder)
+- [x] 0.2.1: own app icon (red "Y" with a play triangle on dark, deliberately not YouTube's logo)
+- [ ] Choose the final name
 - [x] Release signing key (`keystore/`, git-ignored) and signed release APKs, about 97 MB each (22 Nov 2026)
 - [ ] **Back up `keystore/projecty-release.jks` and `keystore.properties`**
 - [x] Release 0.1.0 installed on your phone via Drive: works, but laggy, especially going from Home to Shorts

@@ -24,8 +24,8 @@ android {
         applicationId = "dev.projecty.app"
         minSdk = 26 // GeckoView requires Android 8.0+
         targetSdk = 36
-        versionCode = 5
-        versionName = "0.2.0"
+        versionCode = 6
+        versionName = "0.2.1"
     }
 
     // GeckoView ships a native engine per CPU type. Building one APK per type keeps each

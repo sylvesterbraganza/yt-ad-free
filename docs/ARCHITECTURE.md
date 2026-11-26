@@ -326,6 +326,7 @@ edit code ──► build release ──► copy APK ──► commit + push ─
 | 0.1.2 | 3 | 22 Nov 2026 | Settings → Speed tests: H.264 only, identify as Chrome, ad blocker on/off |
 | 0.1.3 | 4 | 22 Nov 2026 | request the screen's highest refresh rate (120 Hz on Galaxy S23) |
 | 0.2.0 | 5 | 26 Nov 2026 | mini player (Back on a video, keep browsing); taps no longer land a few mm low |
+| 0.2.1 | 6 | 26 Nov 2026 | new app icon: red "Y" with a play triangle on a dark background |
 
 ---
 
@@ -364,4 +365,4 @@ edit code ──► build release ──► copy APK ──► commit + push ─
 - **No background audio or picture-in-picture:** not built yet; a decision is pending.
 - **No in-app update check:** you have to check Releases manually.
 - **APK size:** ~97 MB, close to GitHub's repo file limit (Releases are fine) and heavy for low-end phones. Nearly all of it is the engine.
-- **Placeholder name and icon:** "Project Y" and the teal "Y".
+- **Placeholder name:** "Project Y". The icon (0.2.1) is our own red "Y" with a play triangle on dark; keep it clearly different from YouTube's logo.

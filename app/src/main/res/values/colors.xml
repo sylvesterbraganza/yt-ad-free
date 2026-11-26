@@ -2,6 +2,8 @@
 <resources>
     <!-- Matches YouTube's light page background so there is no flash while loading. -->
     <color name="page_background">#FFFFFF</color>
-    <color name="icon_background">#0F766E</color>
-    <color name="icon_foreground">#FFFFFF</color>
+    <!-- App icon: dark background, red "Y", white play triangle. -->
+    <color name="icon_background">#0F0F0F</color>
+    <color name="icon_foreground">#FF3B30</color>
+    <color name="icon_accent">#FFFFFF</color>
 </resources>

@@ -1,14 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Original "Y" mark (placeholder until a final name/logo is chosen). 108dp adaptive-icon canvas. -->
+<!--
+  Project Y's own mark: a bold red "Y" with a play triangle in its fork, on a dark background
+  (mipmap-anydpi-v26/ic_launcher.xml). Deliberately NOT YouTube's logo (no red rounded rectangle
+  with a centred white triangle). 108dp adaptive-icon canvas; everything stays inside the 66dp
+  safe circle so every launcher shape (circle, squircle, rounded square) shows it whole.
+-->
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
     android:width="108dp"
     android:height="108dp"
     android:viewportWidth="108"
     android:viewportHeight="108">
+    <!-- The Y -->
     <path
-        android:pathData="M39,37 L54,55 L69,37 M54,55 L54,72"
-        android:strokeWidth="9"
+        android:pathData="M36,36 L54,57 L72,36 M54,57 L54,76"
+        android:strokeWidth="10"
         android:strokeColor="@color/icon_foreground"
         android:strokeLineCap="round"
+        android:strokeLineJoin="round" />
+    <!-- Play triangle in the fork -->
+    <path
+        android:pathData="M49.5,27.5 L49.5,41.5 L61,34.5 Z"
+        android:fillColor="@color/icon_accent"
+        android:strokeColor="@color/icon_accent"
+        android:strokeWidth="2"
         android:strokeLineJoin="round" />
 </vector>
