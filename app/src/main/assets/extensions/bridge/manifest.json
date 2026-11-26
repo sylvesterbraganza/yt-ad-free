@@ -1,0 +1,17 @@
+{
+  "manifest_version": 2,
+  "name": "Project Y bridge",
+  "version": "1.5",
+  "description": "Lets the app and YouTube's page talk: opens videos in the app's player and runs the mini player.",
+  "browser_specific_settings": {
+    "gecko": { "id": "bridge@projecty.dev" }
+  },
+  "permissions": ["nativeMessaging", "nativeMessagingFromContent", "geckoViewAddons"],
+  "content_scripts": [
+    {
+      "matches": ["*://*.youtube.com/*"],
+      "js": ["bridge.js"],
+      "run_at": "document_start"
+    }
+  ]
+}

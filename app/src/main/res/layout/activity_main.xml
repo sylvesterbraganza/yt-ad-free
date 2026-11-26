@@ -1,6 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
-<org.mozilla.geckoview.GeckoView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/gecko_view"
+<!--
+  The root container gets the system-bar padding, NOT the GeckoViews: GeckoView draws its page
+  inside its own padding but reads touches without it, so padding a GeckoView makes every tap
+  land one status-bar height too low.
+-->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/page_background" />
+    android:background="@color/page_background">
+
+    <!-- Browsing: home, subscriptions, search, Shorts... -->
+    <org.mozilla.geckoview.GeckoView
+        android:id="@+id/gecko_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <!-- The video player: full size, or shrunk to the mini player. Hidden when no video. -->
+    <FrameLayout
+        android:id="@+id/player_box"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/page_background"
+        android:visibility="gone">
+
+        <org.mozilla.geckoview.GeckoView
+            android:id="@+id/player_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <!-- Mini player only: tap anywhere to expand. -->
+        <View
+            android:id="@+id/mini_touch"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="@string/mini_expand"
+            android:visibility="gone" />
+
+        <ImageButton
+            android:id="@+id/mini_play"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="bottom|start"
+            android:layout_margin="6dp"
+            android:background="@drawable/bg_mini_button"
+            android:contentDescription="@string/mini_play_pause"
+            android:src="@drawable/ic_pause"
+            android:visibility="gone" />
+
+        <ImageButton
+            android:id="@+id/mini_close"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="top|end"
+            android:layout_margin="6dp"
+            android:background="@drawable/bg_mini_button"
+            android:contentDescription="@string/mini_close"
+            android:src="@drawable/ic_close"
+            android:visibility="gone" />
+    </FrameLayout>
+</FrameLayout>

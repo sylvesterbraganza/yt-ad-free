@@ -1,0 +1,12 @@
+<!doctype html>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Touch test</title>
+<style>body{margin:0;font:16px sans-serif} #b{position:absolute;top:300px;left:50px;width:200px;height:60px;background:#c00;color:#fff}</style>
+<div id="b">target</div>
+<script>
+  // Debug-only: logs where taps land, in page coordinates, to check touch/display alignment.
+  document.addEventListener("pointerdown", (e) => {
+    console.log("TOUCHTEST clientX=" + e.clientX.toFixed(1) + " clientY=" + e.clientY.toFixed(1) +
+      " dpr=" + devicePixelRatio + " hitTarget=" + (e.target.id === "b"));
+  });
+</script>

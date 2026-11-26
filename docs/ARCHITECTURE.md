@@ -76,7 +76,9 @@ yt app/
 │       │   ├── res/                         layouts, strings, colours, icon, shortcut
 │       │   └── assets/extensions/
 │       │       ├── ublock/                  uBlock Origin, unpacked (from scripts/update-ublock.ps1)
-│       │       └── tweaks/                  our extension: manifest.json + no-av1.js
+│       │       ├── tweaks/                  our extension: hides AV1 (no-av1.js)
+│       │       ├── h264/                    optional H.264-only mode (Settings switch)
+│       │       └── bridge/                  app <-> page messages: video taps, mini player
 │       ├── debug/assets/debug/              test pages, ONLY in debug builds
 │       │   └── fullscreen.html
 │       └── test/java/.../SitePolicyTest.kt  JVM unit tests
@@ -153,6 +155,43 @@ These are for finding out what actually helps on a given phone. The winners shou
 
 ### 4.4c Refresh rate (since 0.1.3)
 `MainActivity.requestHighestRefreshRate()` picks the fastest display mode at the current resolution and sets it as the window's `preferredDisplayModeId`. Without it, phones such as the Galaxy S23 may run the app at 60 Hz while the official YouTube app scrolls at 120 Hz. The log line `Display: requested X Hz` shows the result.
+
+### 4.4d Mini player (since 0.2.0)
+The app shows two GeckoViews, each with its own session (same engine, same cookies):
+
+| View | Session | Shows |
+|---|---|---|
+| browse view (`gecko_view`) | `ProjectYApp.session` | Home, search, subscriptions, Shorts... |
+| player view (`player_view`, inside `player_box`) | `ProjectYApp.playerSession` | the video you opened |
+
+How a video gets to the player:
+1. **bridge.js** (built-in extension `assets/extensions/bridge/`, id `bridge@projecty.dev`) runs in both views. In the browse view it catches taps on `/watch?v=` links and sends `{type:"openVideo"}` to the app over GeckoView **native messaging** (`connectNative("projecty")`, received by `ProjectYApp.attachBridge`).
+2. `MainActivity.openVideo` loads the URL in the player session and shows the player full size.
+3. Fallback: if YouTube reaches a video some other way, the browse view's `onLocationChange` sees `/watch`, steps the browse view back and opens the video in the player.
+
+Player states (`ProjectYApp.PlayerMode`, survives a theme change):
+
+| State | Looks like | Get there by |
+|---|---|---|
+| FULL | the normal YouTube watch page | opening a video, tapping the mini player |
+| MINI | small floating video above YouTube's bottom bar, play/pause and close buttons | Back on a video |
+| CLOSED | hidden, player page reset to `about:blank` | the mini player's close button, or leaving the video page (channel, search...), which then continues in the browse view |
+
+How MINI works:
+- The app shrinks `player_box` to 55% of the screen width at 16:9 and sends `{type:"mini", on:true}`.
+- bridge.js pins YouTube's player (`#movie_player`) to fill the small window and hides everything around it.
+- YouTube's own code pauses a player it considers too small, so while mini, bridge.js ignores pauses that YouTube starts itself. Pauses from our button still work.
+- On expanding it resumes playback if YouTube re-applies that pause.
+- Play/pause uses YouTube's player API (`playVideo()`/`pauseVideo()`), because the mobile player only loads the stream once its own play has been triggered.
+- Opening Shorts while mini pauses the mini player.
+
+Other details:
+- The player view uses GeckoView's **TextureView backend** (`setViewBackend(BACKEND_TEXTURE_VIEW)`). Two overlapping SurfaceViews can't be layered or rounded reliably.
+- Both sessions get a **permission delegate** that allows autoplay (audible and inaudible). Without it GeckoView refuses to start a video that wasn't tapped on that very page, which includes every video in the player view. All other permissions stay denied.
+- When the player is FULL, the browse session is set inactive to save battery.
+
+### 4.4e Touch alignment (fixed in 0.2.0)
+GeckoView draws the page *inside* its padding but reads touches *without* it. So the system-bar padding goes on the `root` FrameLayout, never on a GeckoView. Before 0.2.0 the GeckoView itself was padded, and every tap landed one status-bar height (~3–4 mm) too low. Debug test page: `resource://android/assets/debug/touch.html` logs where taps land (`TOUCHTEST` in logcat).
 
 ### 4.5 Full-screen video and rotation
 - YouTube's player asks for full screen, and GeckoView calls `onFullScreen(true)`. We hide the status and navigation bars (swipe from the edge shows them briefly) and remove the inset padding.
@@ -286,6 +325,7 @@ edit code ──► build release ──► copy APK ──► commit + push ─
 | 0.1.1 | 2 | 22 Nov 2026 | hide AV1, so video uses hardware decoding (fixes Shorts lag) |
 | 0.1.2 | 3 | 22 Nov 2026 | Settings → Speed tests: H.264 only, identify as Chrome, ad blocker on/off |
 | 0.1.3 | 4 | 22 Nov 2026 | request the screen's highest refresh rate (120 Hz on Galaxy S23) |
+| 0.2.0 | 5 | 26 Nov 2026 | mini player (Back on a video, keep browsing); taps no longer land a few mm low |
 
 ---
 

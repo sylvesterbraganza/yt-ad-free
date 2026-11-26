@@ -35,7 +35,11 @@
 - [x] 0.1.2: "Speed tests" switches in Settings: H.264 only, identify as Chrome, ad blocker on/off (verified on the emulator)
 - [x] Your phone: Galaxy S23 (Snapdragon 8 Gen 2, 120 Hz screen)
 - [x] 0.1.3: request 120 Hz (verified it doesn't crash on the emulator, which only has 60 Hz)
-- [ ] You: check that 0.1.3 scrolls at 120 Hz on the S23
+- [x] You: 0.1.3 on the S23 "working good"
+- [x] 0.2.0: taps landed a few mm low (padding was on the GeckoView); fixed and measured on the emulator
+- [x] 0.2.0: mini player: Back on a video shrinks it, keep browsing, tap to expand, play/pause, close (verified on the emulator)
+- [ ] You: try 0.2.0 on the S23: tap accuracy, mini player, and opening videos from Home/search/subscriptions
+- [ ] Mini player polish ideas: drag to move/dismiss, keep playing while the app is in the background (PiP)
 - [ ] You: on the phone, try each switch and report which ones make it smoother (and the phone model)
 - [ ] Based on results: make the winning switches the default; if still slow, profile on the phone over wireless debugging
 - [ ] Restore the last page after Android kills the app in the background (save and restore the browsing session)

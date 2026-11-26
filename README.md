@@ -25,6 +25,7 @@ Project Y app (Kotlin)
 - **No AV1 (performance):** YouTube sends AV1 video to Firefox-based browsers, and most phones can only decode AV1 in software, which is slow. `assets/extensions/tweaks/no-av1.js` tells YouTube that AV1 isn't supported, so it sends VP9 or H.264, which phones decode in hardware. Verified on the emulator: the hardware VP9 decoder is used for Shorts.
 - **Site lock:** YouTube and Google sign-in pages load in the app. Any other web link opens in your normal browser. Links like `intent:` and `vnd.youtube:` are ignored, so YouTube's official app can't take over.
 - **Full-screen video:** system bars hide, and the screen rotates when YouTube's player asks for landscape.
+- **Mini player:** videos open in their own player view. Back shrinks the video to a floating mini player so you can keep browsing; tap it to expand, or use its play/pause and close buttons.
 - **Back button:** goes back in YouTube. On the first page it sends the app to the background, like the official app.
 - **Opening links:** "Open with…" and "Share" for YouTube links both open the app.
 - **Dark mode:** follows the system setting, and YouTube's site follows it too.
